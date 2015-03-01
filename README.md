@@ -10,16 +10,18 @@ are available based on my channel subscriptions.
 Requests and responses
 ======================
 
-  http://localhost:9292/rewards?account_number=CATCH22&channel_subscriptions[]=KIDS
+    http://localhost:9292/rewards?account_number=CATCH22&channel_subscriptions[]=KIDS
     #=> {"rewards":[],"error":false}
 
 
-  http://localhost:9292/rewards?account_number=CATCH22&channel_subscriptions[]=SPORTS
+    http://localhost:9292/rewards?account_number=CATCH22&channel_subscriptions[]=SPORTS
     #=> {"rewards":["CHAMPIONS_LEAGUE_FINAL_TICKET"],"error":false}
 
 
 Installation & Running
 ======================
 
-  $ bundle install
-  $ puma
+    $ bundle install
+
+
+    $ puma
