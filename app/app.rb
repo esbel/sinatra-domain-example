@@ -14,6 +14,21 @@ class App < Sinatra::Base
   set :server, :puma
 
   get '/' do
-    'Hello world!'
+    'Rewards service: OK'
+  end
+
+  get '/rewards' do
+    rewards_service = RewardsService.new(EligibilityService.new)
+    subscriptions   = map_subscriptions(params["channel_subscriptions"])
+
+    result = rewards_service.call(params["account_number"], subscriptions)
+
+    result.to_json
+  end
+
+  private
+
+  def map_subscriptions(channel_names)
+    channel_names.map { |name| Channel.new(name) }
   end
 end
