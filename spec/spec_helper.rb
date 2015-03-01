@@ -6,4 +6,8 @@ require 'rack/test'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+
+  def app
+    App
+  end
 end
