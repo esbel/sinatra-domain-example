@@ -9,11 +9,16 @@ RSpec.describe RewardsService do
     it 'assigns eligibility_service' do
       expect(subject.eligibility_service).to eq(eligibility_service)
     end
+
+    it 'instantiates rewards_rule' do
+      expect(subject.rewards_rule).to be_a_kind_of(RewardsRule)
+    end
   end
 
   describe '.call' do
     let(:account_number)        { double }
     let(:channel_subscriptions) { double }
+    let(:rewards)               { [] }
 
     before do
       allow(eligibility_service).

@@ -1,14 +1,16 @@
 class RewardsService
-  attr :eligibility_service
+  attr :eligibility_service, :rewards_rule
 
   def initialize(eligibility_service)
     @eligibility_service = eligibility_service
+
+    @rewards_rule = RewardsRule.new
   end
 
   def call(account_number, subscriptions)
     begin
       if eligibility_service.call(account_number)
-        rewards = [ :zona ]
+        rewards = reward_rule.call(subscriptions)
       end
     rescue EligibilityService::InvalidAccountNumber
       error_message = "Invalid account number."
