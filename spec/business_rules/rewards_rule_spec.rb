@@ -23,14 +23,14 @@ RSpec.describe RewardsRule do
         end
       end
 
-      it_behaves_like 'channel into reward mapping', :KIDS,   []
-      it_behaves_like 'channel into reward mapping', :NEWS,   []
-      it_behaves_like 'channel into reward mapping', :MOVIES, [ Reward.new(:PIRATES_OF_THE_CARIBBEAN_COLLECTION) ]
-      it_behaves_like 'channel into reward mapping', :MUSIC,  [ Reward.new(:KARAOKE_PRO_MICROPHONE) ]
-      it_behaves_like 'channel into reward mapping', :SPORTS, [ Reward.new(:CHAMPIONS_LEAGUE_FINAL_TICKET) ]
+      it_behaves_like 'channel into reward mapping', "KIDS",   []
+      it_behaves_like 'channel into reward mapping', "NEWS",   []
+      it_behaves_like 'channel into reward mapping', "MOVIES", [ Reward.new("PIRATES_OF_THE_CARIBBEAN_COLLECTION") ]
+      it_behaves_like 'channel into reward mapping', "MUSIC",  [ Reward.new("KARAOKE_PRO_MICROPHONE") ]
+      it_behaves_like 'channel into reward mapping', "SPORTS", [ Reward.new("CHAMPIONS_LEAGUE_FINAL_TICKET") ]
 
       context 'when multiple qualifying channels provided' do
-        let(:channels) { [ Channel.new(:SPORTS), Channel.new(:MUSIC) ] }
+        let(:channels) { [ Channel.new("SPORTS"), Channel.new("MUSIC") ] }
 
         it 'returns multiple rewards' do
           expect(subject.call(channels).length).to eq(2)

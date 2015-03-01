@@ -1,10 +1,10 @@
 class RewardsRule
   MAPPING = {
-    SPORTS: :CHAMPIONS_LEAGUE_FINAL_TICKET,
-    KIDS:   nil,
-    MUSIC:  :KARAOKE_PRO_MICROPHONE,
-    NEWS:   nil,
-    MOVIES: :PIRATES_OF_THE_CARIBBEAN_COLLECTION
+    "KIDS"   => nil,
+    "MUSIC"  => "KARAOKE_PRO_MICROPHONE",
+    "MOVIES" => "PIRATES_OF_THE_CARIBBEAN_COLLECTION",
+    "NEWS"   => nil,
+    "SPORTS" => "CHAMPIONS_LEAGUE_FINAL_TICKET"
   }
 
   def call(channels)
