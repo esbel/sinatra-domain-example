@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../app/app.rb'  # <-- your sinatra app
+require_relative '../app/app.rb'
 require 'rspec'
 require 'rack/test'
 
