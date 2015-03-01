@@ -10,7 +10,7 @@ class RewardsService
   def call(account_number, subscriptions)
     begin
       if eligibility_service.call(account_number)
-        rewards = reward_rule.call(subscriptions)
+        rewards = rewards_rule.call(subscriptions)
       end
     rescue EligibilityService::InvalidAccountNumber
       error_message = "Invalid account number."
@@ -27,7 +27,7 @@ class RewardsService
 
   def map_response(rewards, error_message)
     {
-      rewards: rewards || [],
+      rewards: rewards.collect(&:name) || [],
       error:   error_message
     }
   end

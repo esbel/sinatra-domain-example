@@ -27,11 +27,25 @@ RSpec.describe RewardsService do
     end
 
     context 'when customer is eligible' do
+      let(:channel_subscriptions) { [ Channel.new("MOVIES") ] }
       let(:eligibility) { true }
 
       it 'returns some rewards' do
         expect(subject.call(account_number, channel_subscriptions)[:rewards]).
           not_to be_empty
+      end
+
+      it 'calls RewardsRule to get rewards' do
+        expect(subject.rewards_rule).
+          to receive(:call).
+          with(channel_subscriptions)
+
+        subject.call(account_number, channel_subscriptions)
+      end
+
+      it 'returns mapped rewards' do
+        expect(subject.call(account_number, channel_subscriptions)[:rewards]).
+          to include("PIRATES_OF_THE_CARIBBEAN_COLLECTION")
       end
     end
 
