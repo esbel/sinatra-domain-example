@@ -6,6 +6,6 @@ class Reward
   end
 
   def ==(other_reward)
-  name  == other_reward.name
+    name == other_reward.name
   end
 end
