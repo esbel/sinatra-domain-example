@@ -1,7 +1,7 @@
 require_relative '../spec_helper.rb'
 
 RSpec.describe 'RewardsService' do
-  describe '/' do
+  describe 'GET /' do
     it 'returns 200' do
       get '/'
 
@@ -9,7 +9,7 @@ RSpec.describe 'RewardsService' do
     end
   end
 
-  describe '/rewards' do
+  describe 'GET /rewards' do
     let(:params) do
       {
         account_number: "CATCH22",
